@@ -23,8 +23,5 @@ async function processingCity(city){
     }else{
         console.log("could not proccess data due to fetch error.");
     }
-     console.log(weatherData);
-    return weatherData;
-   
+    return weatherData;   
 }
-processingCity("rabat");
