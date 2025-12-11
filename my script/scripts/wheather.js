@@ -7,6 +7,7 @@ async function getData(city) {
       throw new Error("Request failed");
     }
     const jsonformat = await Data.json();
+    console.log(jsonformat);
     return jsonformat;
   } catch (error) {
     console.log("ERROR : ", error);
@@ -70,6 +71,17 @@ async function set_Day_hour(city) {
     "Saturday",
   ];
   const dayName = days[date.getDay()];
-  document.querySelector(".day").innerHTML = `${dayName}, `;
+  document.querySelector(".day").innerHTML = `${dayName},`;
 }
 set_Day_hour("rabat");
+async function get_Weather_Detailes(city, urlImg){
+  const getDat = await getData(city);
+  if(!getDat){
+    console.log("the fetching Detiales failed !!");
+  }
+  const state = getDat.weather[0].description;
+  document.querySelector(".theState").innerHTML = state;
+  const url = `../../weather-icons/design/fill/final/${urlImg}.svg`;
+  document.querySelector(".iconDetailes").src = url;
+}
+get_Weather_Detailes("rabat", "cloudy");
