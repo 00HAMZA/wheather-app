@@ -16,25 +16,6 @@ async function getData(city) {
   }
 }
 getData("barcelona");
-/*async function getDetailes(city) {
-  const getDat = await getData(city);
-  const nameCity = getDat.name;
-  const base = getDat.base;
-  const temp = getDat.main.temp;
-  const icon = getDat.weather[0].icon;
-  console.log(getDat);
-  console.log("the base is : ", base);
-  console.log("the name of the city is : ", nameCity);
-  console.log("the temp is : ", temp);
-  console.log(icon);
-}*/
-/*async function spesefic(city){
-    const data = await processingCity(city);
-    console.log("the Data : ", data);
-    console.log("the name : ", data.name);
-}*/
-//document.querySelector(".picweather").innerHTML =
-//getData("rabat");
 function getImg(path) {
   const src = `../../weather-icons/design/fill/final/${path}.svg`;
   document.querySelector(".bigIcon").src = src;
@@ -74,14 +55,18 @@ async function set_Day_hour(city) {
   document.querySelector(".day").innerHTML = `${dayName},`;
 }
 set_Day_hour("rabat");
-async function get_Weather_Detailes(city, urlImg){
+async function get_Weather_Detailes(city, urlImg, wind){
   const getDat = await getData(city);
   if(!getDat){
     console.log("the fetching Detiales failed !!");
   }
   const state = getDat.weather[0].description;
+  const winde = getDat.wind.speed;
   document.querySelector(".theState").innerHTML = state;
+  document.querySelector(".wind").innerHTML = `Wind speed - ${winde}`;
   const url = `../../weather-icons/design/fill/final/${urlImg}.svg`;
+  const urlWind = `../../weather-icons/design/fill/final/${wind}.svg`
   document.querySelector(".iconDetailes").src = url;
+  document.querySelector(".iconDetailes2").src = urlWind;
 }
-get_Weather_Detailes("rabat", "cloudy");
+get_Weather_Detailes("rabat", "cloudy", "windsock");
