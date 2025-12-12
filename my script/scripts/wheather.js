@@ -83,5 +83,6 @@ async function pic(city) {
   }
   const photoUrl = data.results[0].urls.regular;
   document.querySelector(".cityImage").src = photoUrl;
+  document.querySelector(".cityName").innerHTML = city;
 }
 pic("rabat");
