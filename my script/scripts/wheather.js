@@ -7,7 +7,6 @@ async function getData(city) {
       throw new Error("Request failed");
     }
     const jsonformat = await Data.json();
-    console.log(jsonformat);
     return jsonformat;
   } catch (error) {
     console.log("ERROR : ", error);
@@ -15,7 +14,7 @@ async function getData(city) {
     console.log("the operation in finished !!");
   }
 }
-getData("barcelona");
+getData("rabat");
 function getImg(path) {
   const src = `../../weather-icons/design/fill/final/${path}.svg`;
   document.querySelector(".bigIcon").src = src;
@@ -55,9 +54,9 @@ async function set_Day_hour(city) {
   document.querySelector(".day").innerHTML = `${dayName},`;
 }
 set_Day_hour("rabat");
-async function get_Weather_Detailes(city, urlImg, wind){
+async function get_Weather_Detailes(city, urlImg, wind) {
   const getDat = await getData(city);
-  if(!getDat){
+  if (!getDat) {
     console.log("the fetching Detiales failed !!");
   }
   const state = getDat.weather[0].description;
@@ -65,8 +64,24 @@ async function get_Weather_Detailes(city, urlImg, wind){
   document.querySelector(".theState").innerHTML = state;
   document.querySelector(".wind").innerHTML = `Wind speed - ${winde}`;
   const url = `../../weather-icons/design/fill/final/${urlImg}.svg`;
-  const urlWind = `../../weather-icons/design/fill/final/${wind}.svg`
+  const urlWind = `../../weather-icons/design/fill/final/${wind}.svg`;
   document.querySelector(".iconDetailes").src = url;
   document.querySelector(".iconDetailes2").src = urlWind;
 }
 get_Weather_Detailes("rabat", "cloudy", "windsock");
+async function pic(city) {
+  const accekey = "Lu9vbwZNoXnml4P4UHk5oMWUxKEj0E6ZYE086p1QFsI";
+  const url = `https://api.unsplash.com/search/photos?query=${city}&per_page=1`;
+  const res = await fetch(url, {
+    headers: {
+      Authorization: `Client-ID ${accekey}`,
+    },
+  });
+  const data = await res.json();
+  if (data.results.length === 0) {
+    console.log("No photos founds in this city...");
+  }
+  const photoUrl = data.results[0].urls.regular;
+  document.querySelector(".cityImage").src = photoUrl;
+}
+pic("rabat");

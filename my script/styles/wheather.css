@@ -120,3 +120,15 @@ body {
   font-size: 14px;
   font-size:small;
 }
+.city {
+  width: 200px;
+  height: 70px;
+  overflow: hidden;      /* hides cut parts */
+  border-radius: 5px;
+}
+.city img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;     /* crop the image without stretching */
+  object-position: center; /* center the main part */
+}
