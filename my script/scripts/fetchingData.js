@@ -1,4 +1,5 @@
-export async function getData(city) {
+import { handleImage } from "./handlePictures.js";
+export async function getData(city = "rabat") {
   try {
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=6c5aa638b47d9c035d3b8a995b865304`;
     let Data = await fetch(url);
@@ -14,9 +15,11 @@ export async function getData(city) {
     console.log("the operation in finished !!");
   }
 }
-export function getImg(path) {
-  const src = `../../weather-icons/design/fill/final/${path}.svg`;
-  document.querySelector(".bigIcon").src = src;
+export async function getImg(path, city) {
+    const realUrl = await  handleImage(city);
+  const src = `../../weather-icons/design/fill/final/${realUrl}.svg`;
+  const img = document.querySelector(".bigIcon");
+  if(img) img.src = src;
 }
 
 export function set_Degree(city) {

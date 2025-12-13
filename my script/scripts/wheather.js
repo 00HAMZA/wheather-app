@@ -1,4 +1,5 @@
 // {}
+import { handleImage } from "./handlePictures.js";
 import {
   getData,
   getImg,
@@ -12,7 +13,7 @@ function mainFunc() {
   const button = document.querySelector(".searchbutton");
   const input = document.querySelector(".inputJs");
 
-  async function handleInput(){
+  async function handleInput() {
     let city = input.value;
     const data = await getData(city);
     getImg("clear-day");
