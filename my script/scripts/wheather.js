@@ -15,11 +15,13 @@ async function getData(city) {
   }
 }
 getData("rabat");
+
 function getImg(path) {
   const src = `../../weather-icons/design/fill/final/${path}.svg`;
   document.querySelector(".bigIcon").src = src;
 }
 getImg("clear-day");
+
 async function set_Degree(city) {
   const getDat = await getData(city);
   if (!getDat) {
@@ -32,6 +34,7 @@ async function set_Degree(city) {
   document.querySelector(".temp-number").innerHTML = formatTemp;
 }
 set_Degree("rabat");
+
 async function set_Day_hour(city) {
   const getDat = await getData(city);
   if (!getDat) {
@@ -54,6 +57,7 @@ async function set_Day_hour(city) {
   document.querySelector(".day").innerHTML = `${dayName},`;
 }
 set_Day_hour("rabat");
+
 async function get_Weather_Detailes(city, urlImg, wind) {
   const getDat = await getData(city);
   if (!getDat) {
@@ -68,8 +72,9 @@ async function get_Weather_Detailes(city, urlImg, wind) {
   document.querySelector(".iconDetailes").src = url;
   document.querySelector(".iconDetailes2").src = urlWind;
 }
+
 get_Weather_Detailes("rabat", "cloudy", "windsock");
-async function pic(city) {
+async function picture(city) {
   const accekey = "Lu9vbwZNoXnml4P4UHk5oMWUxKEj0E6ZYE086p1QFsI";
   const url = `https://api.unsplash.com/search/photos?query=${city}&per_page=1`;
   const res = await fetch(url, {
@@ -85,4 +90,22 @@ async function pic(city) {
   document.querySelector(".cityImage").src = photoUrl;
   document.querySelector(".cityName").innerHTML = city;
 }
-pic("rabat");
+picture("rabat");
+
+function mainFunc() {
+  const button = document.querySelector(".searchbutton");
+  const input = document.querySelector(".inputJs");
+
+  function handleInput() {
+    const value = input.value;
+    console.log(value);
+    input.value = "";
+  }
+  button.addEventListener("click", handleInput);
+  input.addEventListener("keydown", (event) => {
+    if (event.key === "Enter") {
+      handleInput();
+    }
+  });
+}
+mainFunc();

@@ -23,7 +23,7 @@ body {
 
 .nav {
   background-color: rgb(255, 255, 255);
-  padding: 20px; /* gives visible height */
+  padding: 24px; /* gives visible height */
   border-radius: 20px 0 0 20px;
 }
 
@@ -125,7 +125,7 @@ body {
   height: 70px;
   overflow: hidden;
   border-radius: 20px;
-  position: relative;
+  position: relative; 
 }
 
 .city img {
@@ -146,7 +146,7 @@ body {
   color: white;
   font-weight: bold;
   text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
-  letter-spacing: 3px;
+  letter-spacing: 7px;
 }
 .shadow{
   top: 0;
