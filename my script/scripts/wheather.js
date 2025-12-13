@@ -1,111 +1,32 @@
 // {}
-async function getData(city) {
-  try {
-    const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=6c5aa638b47d9c035d3b8a995b865304`;
-    let Data = await fetch(url);
-    if (!Data) {
-      throw new Error("Request failed");
-    }
-    const jsonformat = await Data.json();
-    return jsonformat;
-  } catch (error) {
-    console.log("ERROR : ", error);
-  } finally {
-    console.log("the operation in finished !!");
-  }
-}
-getData("rabat");
-
-function getImg(path) {
-  const src = `../../weather-icons/design/fill/final/${path}.svg`;
-  document.querySelector(".bigIcon").src = src;
-}
-getImg("clear-day");
-
-async function set_Degree(city) {
-  const getDat = await getData(city);
-  if (!getDat) {
-    console.log("fetching failed of set_Day_hour function !!");
-    return;
-  }
-  const temp = `${getDat.main.temp}`;
-  const formatTemp = Math.round(temp).toFixed(0);
-  document.querySelector(".p-cilisius").innerHTML = "°C";
-  document.querySelector(".temp-number").innerHTML = formatTemp;
-}
-set_Degree("rabat");
-
-async function set_Day_hour(city) {
-  const getDat = await getData(city);
-  if (!getDat) {
-    console.log("fetching day and hour failed !!");
-  }
-  const date = new Date(getDat.dt * 1000);
-  const hour = date.getHours();
-  const hour_minutes = hour.toFixed(2);
-  document.querySelector(".hour").innerHTML = hour_minutes;
-  const days = [
-    "Sunday",
-    "Monday",
-    "Tuestday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-  ];
-  const dayName = days[date.getDay()];
-  document.querySelector(".day").innerHTML = `${dayName},`;
-}
-set_Day_hour("rabat");
-
-async function get_Weather_Detailes(city, urlImg, wind) {
-  const getDat = await getData(city);
-  if (!getDat) {
-    console.log("the fetching Detiales failed !!");
-  }
-  const state = getDat.weather[0].description;
-  const winde = getDat.wind.speed;
-  document.querySelector(".theState").innerHTML = state;
-  document.querySelector(".wind").innerHTML = `Wind speed - ${winde}`;
-  const url = `../../weather-icons/design/fill/final/${urlImg}.svg`;
-  const urlWind = `../../weather-icons/design/fill/final/${wind}.svg`;
-  document.querySelector(".iconDetailes").src = url;
-  document.querySelector(".iconDetailes2").src = urlWind;
-}
-
-get_Weather_Detailes("rabat", "cloudy", "windsock");
-async function picture(city) {
-  const accekey = "Lu9vbwZNoXnml4P4UHk5oMWUxKEj0E6ZYE086p1QFsI";
-  const url = `https://api.unsplash.com/search/photos?query=${city}&per_page=1`;
-  const res = await fetch(url, {
-    headers: {
-      Authorization: `Client-ID ${accekey}`,
-    },
-  });
-  const data = await res.json();
-  if (data.results.length === 0) {
-    console.log("No photos founds in this city...");
-  }
-  const photoUrl = data.results[0].urls.regular;
-  document.querySelector(".cityImage").src = photoUrl;
-  document.querySelector(".cityName").innerHTML = city;
-}
-picture("rabat");
+import {
+  getData,
+  getImg,
+  set_Degree,
+  set_Day_hour,
+  get_Weather_Detailes,
+  picture,
+} from "./fetchingData.js";
 
 function mainFunc() {
   const button = document.querySelector(".searchbutton");
   const input = document.querySelector(".inputJs");
 
-  function handleInput() {
-    const value = input.value;
-    console.log(value);
-    input.value = "";
+  async function handleInput(){
+    let city = input.value;
+    const data = await getData(city);
+    getImg("clear-day");
+    set_Degree(data);
+    set_Day_hour(data);
+    get_Weather_Detailes(data, "cloudy", "windsock");
+    picture(city);
   }
-  button.addEventListener("click", handleInput);
   input.addEventListener("keydown", (event) => {
     if (event.key === "Enter") {
       handleInput();
     }
   });
+
+  button.addEventListener("click", handleInput);
 }
 mainFunc();
