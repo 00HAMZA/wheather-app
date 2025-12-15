@@ -1,0 +1,46 @@
+/*{}*/
+.headerContent {
+  display: grid;
+  grid-template-columns: 200px 200px;
+  justify-content: space-between;
+}
+.right-side {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-content: space-between;
+}
+.left-side {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-content: space-between;
+}
+.detailesDays {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  padding-top: 70px;
+  padding-bottom: 70px;
+}
+.detailesDays div {
+  background-color: lightblue;
+  color: white;
+  padding: 40px 10px;
+  margin: 2px;
+  border-radius: 10px;
+}
+.highlights {
+  margin-bottom: 30px;
+}
+.detaile {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+.detaile div {
+  background-color: lightcoral;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  color: white;
+  height: 70px;
+}
