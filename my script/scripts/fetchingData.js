@@ -15,11 +15,15 @@ export async function getData(city = "rabat") {
     console.log("the operation in finished !!");
   }
 }
-export async function getImg(path, city) {
-    const realUrl = await  handleImage(city);
-  const src = `../../weather-icons/design/fill/final/${realUrl}.svg`;
+export async function getImg(city) {
+  const realUrl = await handleImage(city);
   const img = document.querySelector(".bigIcon");
-  if(img) img.src = src;
+  if (!img) return;
+  img.onerror = () => {
+    console.log("image failed to load: ", img.src);
+    img.src = `/weather-icons/design/fill/final/code-red.svg`;
+  };
+  img.src = `/weather-icons/design/fill/final/${realUrl}.svg`;
 }
 
 export function set_Degree(city) {

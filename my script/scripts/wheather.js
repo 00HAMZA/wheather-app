@@ -1,5 +1,4 @@
 // {}
-import { handleImage } from "./handlePictures.js";
 import {
   getData,
   getImg,
@@ -16,7 +15,7 @@ function mainFunc() {
   async function handleInput() {
     let city = input.value;
     const data = await getData(city);
-    getImg("clear-day");
+    getImg(city);
     set_Degree(data);
     set_Day_hour(data);
     get_Weather_Detailes(data, "cloudy", "windsock");
