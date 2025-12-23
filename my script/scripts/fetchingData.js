@@ -7,7 +7,6 @@ export async function getData(city = "rabat") {
       throw new Error("Request failed");
     }
     const jsonformat = await Data.json();
-    console.log(jsonformat);
     return jsonformat;
   } catch (error) {
     console.log("ERROR : ", error);
