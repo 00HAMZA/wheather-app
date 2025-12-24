@@ -49,7 +49,19 @@ async function packetsDates(city) {
   });
   return res;
 }
-packetsDates("rabat");
+async function selectFiveDays(city) {
+  const data = await packetsDates(city);
+  console.log("data : ", data);
+  let len = data.length;
+  let index = Math.floor(len / 2);
+  let res = [];
+  let i = 0;
+  data.forEach((item) => {
+    res.push(item[index]);
+  });
+  return res;
+}
+selectFiveDays("rabat");
 /*function filterDate(date){
   const original = date;
   let splitted = original.split("T");
