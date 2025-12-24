@@ -33,7 +33,20 @@ async function getForecast(city) {
   return json;
 }
 async function packetsDates(city) {
-  const res = sumAllDays();
+  let i = 0;
+  let res = [];
+  let j = 0;
+  const data = await getForecast(city);
+  const days = sumAllDays();
+  days.forEach(() => res.push([]));
+  data.list.forEach((item) => {
+    const clearDate = item.dt_txt.split(" ")[0];
+    const dayIndex = days.indexOf(clearDate);
+    if (dayIndex !== -1) {
+      res[dayIndex].push(item);
+    }
+    i++;
+  });
   return res;
 }
 packetsDates("rabat");
