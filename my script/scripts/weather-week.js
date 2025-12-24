@@ -11,7 +11,6 @@ function get_next_days(days_to_add) {
 function sumAllDays() {
   let res = [];
   let i = 0;
-
   while (i <= 4) {
     let day = new Date(get_next_days(i));
     let formatted = formateDate(day);
@@ -51,7 +50,6 @@ async function packetsDates(city) {
 }
 async function selectFiveDays(city) {
   const data = await packetsDates(city);
-  console.log("data : ", data);
   let len = data.length;
   let index = Math.floor(len / 2);
   let res = [];
@@ -62,14 +60,23 @@ async function selectFiveDays(city) {
   return res;
 }
 selectFiveDays("rabat");
-/*function filterDate(date){
-  const original = date;
-  let splitted = original.split("T");
-  console.log(splitted);
-}*/
-/*async function groups_AllDays(date ,city){
-  const formattedDate = todayDate.toISOString().split("T")[0];
-  //  const date = await packetsDates(city , formattedDate);
+ async function domOfWeeks(city){
+  const data =  await selectFiveDays(city);
+  const sunday = data[0];
+  const day0 = sunday.main.temp;
+  const monday = data[1];
+  const day1 = monday.main.temp;
+  const thusday = data[2];
+  const day2 = thusday.main.temp;
+  const wednesday = data[3];
+  const day3 = wednesday.main.temp;
+  const thursday = data[4];
+  const day4 = thursday.main.temp;
+  document.querySelector(".sunday").querySelector(".degre").innerHTML = day0;   
+  document.querySelector(".monday").querySelector(".degre").innerHTML = day1;   
+  document.querySelector(".thusday").querySelector(".degre").innerHTML = day2;   
+  document.querySelector(".wednesday").querySelector(".degre").innerHTML = day3;   
+  document.querySelector(".thursday").querySelector(".degre").innerHTML = day4;   
+  console.log(monday);
 }
-groups_AllDays("rabat");
-*/
+domOfWeeks("dakhla");
