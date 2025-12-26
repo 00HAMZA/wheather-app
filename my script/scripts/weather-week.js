@@ -55,28 +55,70 @@ async function selectFiveDays(city) {
   let res = [];
   let i = 0;
   data.forEach((item) => {
+    if (item.length <= 2) {
+      index = 1;
+    }
     res.push(item[index]);
   });
   return res;
 }
 selectFiveDays("rabat");
- async function domOfWeeks(city){
-  const data =  await selectFiveDays(city);
+async function domOfWeeks(city) {
+  const data = await selectFiveDays(city);
   const sunday = data[0];
-  const day0 = sunday.main.temp;
+  const day0max = Math.round(sunday.main.temp_max);
+  const day0min = Math.round(sunday.main.temp_min);
   const monday = data[1];
-  const day1 = monday.main.temp;
+  const day1max = Math.round(monday.main.temp_max);
+  const day1min = Math.round(monday.main.temp_min);
   const thusday = data[2];
-  const day2 = thusday.main.temp;
+  const day2max = Math.round(thusday.main.temp_max);
+  const day2min = Math.round(thusday.main.temp_min);
   const wednesday = data[3];
-  const day3 = wednesday.main.temp;
+  const day3max = Math.round(wednesday.main.temp_max);
+  const day3min = Math.round(wednesday.main.temp_min);
   const thursday = data[4];
-  const day4 = thursday.main.temp;
-  document.querySelector(".sunday").querySelector(".degre").innerHTML = day0;   
-  document.querySelector(".monday").querySelector(".degre").innerHTML = day1;   
-  document.querySelector(".thusday").querySelector(".degre").innerHTML = day2;   
-  document.querySelector(".wednesday").querySelector(".degre").innerHTML = day3;   
-  document.querySelector(".thursday").querySelector(".degre").innerHTML = day4;   
-  console.log(monday);
+  const day4max = Math.round(thursday.main.temp_max);
+  const day4min = Math.round(thursday.main.temp_min);
+  document
+    .querySelector(".sunday")
+    .querySelector(".degre")
+    .querySelector(".max").innerHTML = `${day0max}º`;
+  document
+    .querySelector(".sunday")
+    .querySelector(".degre")
+    .querySelector(".min").innerHTML = `${day0min}º`;
+  document
+    .querySelector(".monday")
+    .querySelector(".degre")
+    .querySelector(".max").innerHTML = `${day1max}º`;
+  document
+    .querySelector(".monday")
+    .querySelector(".degre")
+    .querySelector(".min").innerHTML = `${day1min}º`;
+  document
+    .querySelector(".thusday")
+    .querySelector(".degre")
+    .querySelector(".max").innerHTML = `${day2max}º`;
+  document
+    .querySelector(".thusday")
+    .querySelector(".degre")
+    .querySelector(".min").innerHTML = `${day2min}º`;
+  document
+    .querySelector(".wednesday")
+    .querySelector(".degre")
+    .querySelector(".max").innerHTML = `${day3max}º`;
+  document
+    .querySelector(".wednesday")
+    .querySelector(".degre")
+    .querySelector(".min").innerHTML = `${day3min}º`;
+  document
+    .querySelector(".thursday")
+    .querySelector(".degre")
+    .querySelector(".max").innerHTML = `${day4max}º`;
+  document
+    .querySelector(".thursday")
+    .querySelector(".degre")
+    .querySelector(".min").innerHTML = `${day4min}º`;
 }
 domOfWeeks("dakhla");
