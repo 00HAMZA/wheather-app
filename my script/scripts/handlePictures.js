@@ -38,7 +38,7 @@ export async function handleImage_week(iconCode) {
     "09d": "shower-rain",
     "09n": "shower-rain",
     "10d": "rain",
-    "10n": "rain-night",
+    "10n": "rain",
     "11d": "thunderstorm",
     "11n": "thunderstorm",
     "13d": "snow",
@@ -46,5 +46,5 @@ export async function handleImage_week(iconCode) {
     "50d": "mist",
     "50n": "mist",
   };
-  return map[iconCode];
+  return map[iconCode] || "clear-day";
 }

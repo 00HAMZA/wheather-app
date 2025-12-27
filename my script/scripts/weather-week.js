@@ -49,7 +49,7 @@ export async function selectFiveDays(city) {
   const data = await packetsDates(city);
   let res = [];
   data.forEach((item) => {
-    if(item.length === 0) return;
+    if (item.length === 0) return;
     const index = Math.floor(item.length / 2);
     res.push(item[index]);
   });
@@ -113,6 +113,7 @@ async function dom_Of_Weeks_degree(city) {
     .querySelector(".degre")
     .querySelector(".min").innerHTML = `${day4min}º`;
 }
+dom_Of_Weeks_degree("rabat");
 async function handle_url(city) {
   let res = [];
   const data = await selectFiveDays(city);
@@ -122,12 +123,16 @@ async function handle_url(city) {
     const url = `../../weather-icons/design/fill/final/${nameIcon}.svg`;
     res.push(url);
   }
-  return res; 
+  return res;
 }
-async function handle_icon(city) {
+async function handle_icons(city) {
   const urls = await handle_url(city);
-  for(let i = 0; i < urls.length; i++){
-    
+  const dayContainers = document.querySelectorAll(".days");
+  for (let i = 0; i < urls.length; i++) {
+    const img = dayContainers[i]?.querySelector(".icon .img");
+    if(img){
+      img.src = urls[i];
+    }
   }
 }
-handle_icon("miami");
+handle_icons("rabat");
