@@ -1,8 +1,5 @@
+import { handleImage, handleImage_week } from "./handlePictures.js";
 // {}
-function split_Date(Date) {
-  const res = Date.toISOString().split("T")[0];
-  return res;
-}
 function get_next_days(days_to_add) {
   const date = new Date();
   const res = date.setDate(date.getDate() + days_to_add);
@@ -48,22 +45,17 @@ async function packetsDates(city) {
   });
   return res;
 }
-async function selectFiveDays(city) {
+export async function selectFiveDays(city) {
   const data = await packetsDates(city);
-  let len = data.length;
-  let index = Math.floor(len / 2);
   let res = [];
-  let i = 0;
   data.forEach((item) => {
-    if (item.length <= 2) {
-      index = 1;
-    }
+    if(item.length === 0) return;
+    const index = Math.floor(item.length / 2);
     res.push(item[index]);
   });
   return res;
 }
-selectFiveDays("rabat");
-async function domOfWeeks(city) {
+async function dom_Of_Weeks_degree(city) {
   const data = await selectFiveDays(city);
   const sunday = data[0];
   const day0max = Math.round(sunday.main.temp_max);
@@ -121,4 +113,21 @@ async function domOfWeeks(city) {
     .querySelector(".degre")
     .querySelector(".min").innerHTML = `${day4min}º`;
 }
-domOfWeeks("dakhla");
+async function handle_url(city) {
+  let res = [];
+  const data = await selectFiveDays(city);
+  for (let i = 0; i < data.length; i++) {
+    const iconCode = data[i].weather[0].icon;
+    const nameIcon = await handleImage_week(iconCode);
+    const url = `../../weather-icons/design/fill/final/${nameIcon}.svg`;
+    res.push(url);
+  }
+  return res; 
+}
+async function handle_icon(city) {
+  const urls = await handle_url(city);
+  for(let i = 0; i < urls.length; i++){
+    
+  }
+}
+handle_icon("miami");

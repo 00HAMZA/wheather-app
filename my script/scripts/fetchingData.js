@@ -15,7 +15,7 @@ export async function getData(city = "rabat") {
   }
 }
 export async function getImg(city) {
-  const realUrl = await handleImage(city);
+  const realUrl = await handleImage(city, 0);
   const img = document.querySelector(".bigIcon");
   if (!img) return;
   img.onerror = () => {
