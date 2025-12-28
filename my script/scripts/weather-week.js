@@ -135,4 +135,4 @@ async function handle_icons(city) {
     }
   }
 }
-handle_icons("rabat");
+handle_icons("paris");

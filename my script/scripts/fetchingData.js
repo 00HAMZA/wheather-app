@@ -15,7 +15,7 @@ export async function getData(city = "rabat") {
   }
 }
 export async function getImg(city) {
-  const realUrl = await handleImage(city, 0);
+  const realUrl = await handleImage(city);
   const img = document.querySelector(".bigIcon");
   if (!img) return;
   img.onerror = () => {
@@ -24,7 +24,6 @@ export async function getImg(city) {
   };
   img.src = `/weather-icons/design/fill/final/${realUrl}.svg`;
 }
-
 export function set_Degree(city) {
   const temp = Math.round(city.main.temp);
   document.querySelector(".p-cilisius").innerHTML = "°C";
