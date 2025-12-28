@@ -2,7 +2,7 @@ import { getData } from "./fetchingData.js";
 import {selectFiveDays} from "./weather-week.js";
 export async function handleImage(city) {
   const data = await getData(city); 
-  const iconCode = data.list.weather[0].icon;
+  const iconCode = data.weather[0].icon;
   const map = {
     "01d": "clear-day",
     "01n": "clear-night",
@@ -25,8 +25,6 @@ export async function handleImage(city) {
   return map[iconCode];
 }
 export async function handleImage_week(iconCode) {
-  //const data = await selectFiveDays(city);
-  //const iconCode = data.list[index].weather[0].icon;
   const map = {
     "01d": "clear-day",
     "01n": "clear-night",

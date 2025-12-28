@@ -22,7 +22,7 @@ export async function getImg(city) {
     console.log("image failed to load: ", img.src);
     img.src = `/weather-icons/design/fill/final/code-red.svg`;
   };
-  img.src = `/weather-icons/design/fill/final/${realUrl}.svg`;
+   img.src = `/weather-icons/design/fill/final/${realUrl}.svg`;
 }
 export function set_Degree(city) {
   const temp = Math.round(city.main.temp);

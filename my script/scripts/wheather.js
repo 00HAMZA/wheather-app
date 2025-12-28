@@ -15,6 +15,7 @@ function mainFunc() {
   async function handleInput() {
     let city = input.value;
     const data = await getData(city);
+    console.log(data);
     getImg(city);
     set_Degree(data);
     set_Day_hour(data);
