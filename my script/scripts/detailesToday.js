@@ -37,27 +37,34 @@ async function getAirQuality(city) {
   }
   return { airData, uvData };
 }
-async function handle_qualityAir(city) {
-  let comment;
-  const data = (await getAirQuality(city)).airData;
-  console.log("air ", data);
-  const air = data.list[0].main.aqi;
-  if (air === 1) {
-    comment = "Good";
-  } else if (air === 2) {
-    comment = "Fair";
-  } else if (air === 3) {
-    comment = "Moderate";
-  } else if (air === 4) {
-    comment = "Poor";
-  } else if (air === 5) {
-    comment = "Very Poor";
-  } else {
-    comment = "none";
-  }
-  return { air, comment };
+function getAQIIcon(aqi) {
+  const icons = {
+    1: "😊",
+    2: "🙂",
+    3: "😐",
+    4: "😷",
+    5: "☠️"
+  };
+  return icons[aqi] || "❓";
 }
-handle_qualityAir("rabat");
+function getcomment(aqi) {
+  const icons = {
+    1 : "Good",
+    2 : "Fair",
+    3 : "Moderate",
+    4 : "Poor",
+    5 : "Very Poor"
+  };
+  return icons[aqi] || "None";
+}
+async function handle_qualityAir(city) {
+  const data = (await getAirQuality(city)).airData;
+  const air = data.list[0].main.aqi;
+  const comment = getcomment(air);
+  const icon = getAQIIcon(air)
+  return { air, comment , icon};
+}
+/*handle_qualityAir("rabat");
 async function dom_Air(city) {
   const data = await handle_qualityAir(city);
   const air = data.air;
@@ -65,17 +72,21 @@ async function dom_Air(city) {
   console.log("air and comment : ", air, comment);
   document.querySelector(".numberAir").innerHTML = air;
   document.querySelector(".iconAir").innerHTML = comment;
-}
-dom_Air("rabat");
+}*/
+//dom_Air("rabat");
 export async function handleDetailes(city) {
   const data = await getData(city);
   let res = [];
   const sunrise = data.sys.sunrise;
   const sunset = data.sys.sunset;
+  let sun = [sunrise, sunset];
   const wind = data.wind.speed;
   const visibility = data.visibility;
-  console.log("visibility :", visibility);
-  console.log("wind speed is  :", wind);
-  console.log("the new data is  :", data);
+  const air = await handle_qualityAir(city);
+  res = [sun, wind, visibility, air];
+  return res;
 }
-handleDetailes("rabat");
+async function handle_dom_Detailes(city){
+  const data = await handleDetailes(city);
+}
+handle_dom_Detailes("rabat");
