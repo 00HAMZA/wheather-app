@@ -42,7 +42,7 @@
   grid-template-columns: repeat(3, 1fr);
   gap: 4px;
 }
-.detaile div {
+.detaile > div {
   background-color: lightcoral;
   padding: 20px;
   border-radius: 4px;
@@ -86,4 +86,7 @@
   height: 40px;
   object-fit: contain;
   border-radius: 10px;
+}
+.numberAir{
+  
 }
