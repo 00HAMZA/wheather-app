@@ -104,7 +104,7 @@ async function handle_url(city) {
   }
   return res;
 }
-export async function handle_icons(city) {
+async function handle_icons(city) {
   const urls = await handle_url(city);
   const dayContainers = document.querySelectorAll(".days");
   for (let i = 0; i < urls.length; i++) {
