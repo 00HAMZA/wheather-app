@@ -73,59 +73,38 @@ async function dom_Of_Weeks_degree(city) {
   const day4max = Math.round(thursday.main.temp_max);
   const day4min = Math.round(thursday.main.temp_min);
   document
-    .querySelector(".sunday")
-    .querySelector(".degre")
-    .querySelector(".max").innerHTML = `${day0max}º`;
+    .querySelector(".sunday .degre .max").innerHTML = `${day0max}º`;
   document
-    .querySelector(".sunday")
-    .querySelector(".degre")
-    .querySelector(".min").innerHTML = `${day0min}º`;
+    .querySelector(".sunday .degre .min").innerHTML = `${day0min}º`;
   document
-    .querySelector(".monday")
-    .querySelector(".degre")
-    .querySelector(".max").innerHTML = `${day1max}º`;
+    .querySelector(".monday .degre .max").innerHTML = `${day1max}º`;
   document
-    .querySelector(".monday")
-    .querySelector(".degre")
-    .querySelector(".min").innerHTML = `${day1min}º`;
+    .querySelector(".monday .degre .min").innerHTML = `${day1min}º`;
   document
-    .querySelector(".thusday")
-    .querySelector(".degre")
-    .querySelector(".max").innerHTML = `${day2max}º`;
+    .querySelector(".thusday .degre .max").innerHTML = `${day2max}º`;
   document
-    .querySelector(".thusday")
-    .querySelector(".degre")
-    .querySelector(".min").innerHTML = `${day2min}º`;
+    .querySelector(".thusday .degre .min").innerHTML = `${day2min}º`;
   document
-    .querySelector(".wednesday")
-    .querySelector(".degre")
-    .querySelector(".max").innerHTML = `${day3max}º`;
+    .querySelector(".wednesday .degre .max").innerHTML = `${day3max}º`;
   document
-    .querySelector(".wednesday")
-    .querySelector(".degre")
-    .querySelector(".min").innerHTML = `${day3min}º`;
+    .querySelector(".wednesday .degre .min").innerHTML = `${day3min}º`;
   document
-    .querySelector(".thursday")
-    .querySelector(".degre")
-    .querySelector(".max").innerHTML = `${day4max}º`;
+    .querySelector(".thursday .degre .max").innerHTML = `${day4max}º`;
   document
-    .querySelector(".thursday")
-    .querySelector(".degre")
-    .querySelector(".min").innerHTML = `${day4min}º`;
+    .querySelector(".thursday .degre .min").innerHTML = `${day4min}º`;
 }
-dom_Of_Weeks_degree("rabat");
 async function handle_url(city) {
   let res = [];
   const data = await selectFiveDays(city);
   for (let i = 0; i < data.length; i++) {
     const iconCode = data[i].weather[0].icon;
-    const nameIcon = await handleImage_week(iconCode);
+    const nameIcon =  handleImage_week(iconCode);
     const url = `../../weather-icons/design/fill/final/${nameIcon}.svg`;
     res.push(url);
   }
   return res;
 }
-async function handle_icons(city) {
+export async function handle_icons(city) {
   const urls = await handle_url(city);
   const dayContainers = document.querySelectorAll(".days");
   for (let i = 0; i < urls.length; i++) {
@@ -135,4 +114,7 @@ async function handle_icons(city) {
     }
   }
 }
-handle_icons("paris");
+export function mainFunction(city){
+  handle_icons(city);
+  dom_Of_Weeks_degree(city);
+}

@@ -1,7 +1,7 @@
 /*{}*/
 .headerContent {
   display: grid;
-  grid-template-columns: 200px 200px;
+  grid-template-columns: 200px 140px;
   justify-content: space-between;
 }
 .right-side {
@@ -10,9 +10,10 @@
   justify-content: space-between;
 }
 .left-side {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  justify-content: space-between;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
 }
 .detailesDays {
   display: flex;
@@ -64,26 +65,25 @@
   height: 49px;
 }
 .Cilicuis {
-  display: flex;
   background-color: black;
   color: white;
   width: 20px;
   height: 20px;
-  text-align: center;
-  justify-content: center;
   padding: 4px;
   border-radius: 100%;
-  margin-left: 30px;
 }
 .f-temp {
-  display: flex;
   background-color: white;
   color: gray;
   width: 20px;
   height: 20px;
-  text-align: center;
-  justify-content: center;
   padding: 4px;
   border-radius: 100%;
   box-shadow: 1px 1px 10px whitesmoke;
+}
+.profileclass{
+  width: 40px;  
+  height: 40px;
+  object-fit: contain;
+  border-radius: 10px;
 }

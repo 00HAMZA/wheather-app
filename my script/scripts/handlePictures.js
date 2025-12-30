@@ -24,7 +24,7 @@ export async function handleImage(city) {
   };
   return map[iconCode];
 }
-export async function handleImage_week(iconCode) {
+export  function handleImage_week(iconCode) {
   const map = {
     "01d": "clear-day",
     "01n": "clear-night",

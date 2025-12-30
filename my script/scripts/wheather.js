@@ -1,4 +1,6 @@
 // {}
+import { handleDetailes } from "./detailesToday.js";
+import {mainFunction} from "./weather-week.js";
 import {
   getData,
   getImg,
@@ -15,12 +17,13 @@ function mainFunc() {
   async function handleInput() {
     let city = input.value;
     const data = await getData(city);
-    console.log(data);
     getImg(city);
     set_Degree(data);
     set_Day_hour(data);
     get_Weather_Detailes(data, "cloudy", "windsock");
     picture(city);
+    handleDetailes(city);
+    mainFunction(city);
   }
   input.addEventListener("keydown", (event) => {
     if (event.key === "Enter") {
