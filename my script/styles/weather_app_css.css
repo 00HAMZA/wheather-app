@@ -406,9 +406,10 @@ body {
    0 1px 4px rgba(203, 81, 15, 0.852);
 }
 .sunset_time, .sunrise_time{
-    color: black;
-    font-size:medium;
-    font-weight: bold;
+    color: rgb(67, 67, 67);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: large;
+    font-weight: 500;
     margin-top: 4px;
 }
 .Sunset , .Sunrise{
