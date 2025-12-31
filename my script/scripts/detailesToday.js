@@ -43,17 +43,17 @@ function getAQIIcon(aqi) {
     2: "🙂",
     3: "😐",
     4: "😷",
-    5: "☠️"
+    5: "☠️",
   };
   return icons[aqi] || "❓";
 }
 function getcomment(aqi) {
   const icons = {
-    1 : "Good",
-    2 : "Fair",
-    3 : "Moderate",
-    4 : "Poor",
-    5 : "Very Poor"
+    1: "Good",
+    2: "Fair",
+    3: "Moderate",
+    4: "Poor",
+    5: "Very Poor",
   };
   return icons[aqi] || "None";
 }
@@ -61,8 +61,8 @@ async function handle_qualityAir(city) {
   const data = (await getAirQuality(city)).airData;
   const air = data.list[0].main.aqi;
   const comment = getcomment(air);
-  const icon = getAQIIcon(air)
-  return { air, comment , icon};
+  const icon = getAQIIcon(air);
+  return { air, comment, icon };
 }
 /*handle_qualityAir("rabat");
 async function dom_Air(city) {
@@ -86,12 +86,14 @@ export async function handleDetailes(city) {
   res = [sun, wind, visibility, air];
   return res;
 }
-async function handle_dom_Detailes(city){
+async function handle_dom_Detailes(city) {
   const data = await handleDetailes(city);
   const airQuality = data[3];
   console.log("the icon is :", airQuality.icon);
   document.querySelector(".number_Air").innerHTML = airQuality.air;
-  document.querySelector(".commentair .text_commentair").innerHTML = airQuality.comment;
-document.querySelector(".commentair .emoji_commentair").textContent = airQuality.icon;
+  document.querySelector(".commentair .text_commentair").innerHTML =
+    airQuality.comment;
+  document.querySelector(".commentair .emoji_commentair").textContent =
+    airQuality.icon;
 }
 handle_dom_Detailes("rabat");
