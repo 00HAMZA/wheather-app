@@ -88,5 +88,10 @@ export async function handleDetailes(city) {
 }
 async function handle_dom_Detailes(city){
   const data = await handleDetailes(city);
+  const airQuality = data[3];
+  console.log("the icon is :", airQuality.icon);
+  document.querySelector(".number_Air").innerHTML = airQuality.air;
+  document.querySelector(".commentair .text_commentair").innerHTML = airQuality.comment;
+document.querySelector(".commentair .emoji_commentair").textContent = airQuality.icon;
 }
 handle_dom_Detailes("rabat");
