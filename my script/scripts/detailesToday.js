@@ -1,5 +1,4 @@
 import { getData } from "./fetchingData.js";
-import {set_Day_hour} from "../scripts/fetchingData.js";
 async function getAirQuality(city) {
   let airData;
   let uvData;
@@ -65,16 +64,6 @@ async function handle_qualityAir(city) {
   const icon = getAQIIcon(air);
   return { air, comment, icon };
 }
-/*handle_qualityAir("rabat");
-async function dom_Air(city) {
-  const data = await handle_qualityAir(city);
-  const air = data.air;
-  const comment = data.comment;
-  console.log("air and comment : ", air, comment);
-  document.querySelector(".numberAir").innerHTML = air;
-  document.querySelector(".iconAir").innerHTML = comment;
-}*/
-//dom_Air("rabat");
 export async function handleDetailes(city) {
   const data = await getData(city);
   let res = [];
@@ -87,6 +76,47 @@ export async function handleDetailes(city) {
   res = [sun, wind, visibility, air];
   return res;
 }
+function visibility_comment(aqi){
+  const comment = {
+    1 : "Very Bad",
+    2 : "Bad",
+    3 : "Moderate",
+    4 : "Moderate",
+    5 : "Good",
+    6 : "Good",
+    7 : "Good",
+    8 : "Good",
+    9 : "Good",
+    10 : "Excellent"
+  }
+  return comment[aqi];
+}
+function visibility_icons(aqi){
+  const icons = {
+    1 :"🚫👁️",
+    2 :"🚗💨",
+    3 :"🌥️",
+    4 :"🌥️",
+    5 :"👁️",
+    6 :"👁️",
+    7 :"👁️",
+    8 :"👁️",
+    9 :"👁️",
+    10 : "👁️✨"
+  }
+  return icons[aqi];
+}
+async function visibility(city){
+  let res = [];
+  const data = await handleDetailes(city);
+  const visibility = data[2];
+  const km = `${(visibility / 1000)}.${visibility % 1}`;
+  const comment = visibility_comment(visibility / 1000);
+  const icons = visibility_icons(visibility / 1000);
+  res = [km, comment, icons];
+  return res;
+}
+visibility("rabat");
 function handle_hour(time) {
   const date = new Date(time * 1000);
   const rawHour = date.getHours();
@@ -101,15 +131,20 @@ async function handle_dom_Detailes(city) {
   const sunset_sunrise =  data[0];
   const sunset = handle_hour(sunset_sunrise[0]);
   const sunrise = handle_hour(sunset_sunrise[1]);
-  console.log("daaate",  set_Day_hour(sunset_sunrise[0]));
   const airQuality = data[3];
-  console.log("the icon is :", airQuality.icon);
+  const visibilit = await visibility(city);
+  console.log(visibilit);
   document.querySelector(".number_Air").innerHTML = airQuality.air;
   document.querySelector(".commentair .text_commentair").innerHTML =
     airQuality.comment;
   document.querySelector(".commentair .emoji_commentair").textContent =
     airQuality.icon;
+
   document.querySelector(".sunset_time").innerHTML = sunset;
   document.querySelector(".sunrise_time").innerHTML = sunrise;
+
+  document.querySelector(".visibility_km .number_km").innerHTML = visibilit[0];
+  document.querySelector(".visibility_comment .comment").innerHTML = visibilit[1];
+  document.querySelector(".visibility_comment .icon").innerHTML = visibilit[2];
 }
 handle_dom_Detailes("rabat");
