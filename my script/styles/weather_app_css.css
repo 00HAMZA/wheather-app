@@ -391,3 +391,28 @@ body {
     flex-direction: row;
     justify-content: space-between;
 }
+.arrow_icon{
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  background-color: yellow;
+  box-shadow: inset 0 1px 14px rgba(203, 81, 15, 0.852),
+   0 1px 4px rgba(203, 81, 15, 0.852);
+}
+.sunset_time, .sunrise_time{
+    color: black;
+    font-size:medium;
+    font-weight: bold;
+    margin-top: 4px;
+}
+.Sunset , .Sunrise{
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+}
