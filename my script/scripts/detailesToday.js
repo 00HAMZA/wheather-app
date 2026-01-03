@@ -59,12 +59,11 @@ function getcomment(aqi) {
 }
 function handle_air_marginTop(aqi) {
   const margin = {
-    1: "10px",
-    2: "20px",
+    1: "50px",
+    2: "40px",
     3: "30px",
-    4: "40px",
-    5: "50px",
-    6: "60px",
+    4: "20px",
+    5: "10px",
   };
   return margin[aqi];
 }
@@ -89,8 +88,9 @@ export async function handleDetailes(city) {
   let sun = [sunrise, sunset];
   const wind = data.wind.speed;
   const visibility = data.visibility;
+  const humidity = data.main.humidity;
   const air = await handle_qualityAir(city);
-  res = [sun, wind, visibility, air];
+  res = [sun, wind, visibility, air, humidity];
   return res;
 }
 function visibility_comment(aqi) {
@@ -150,7 +150,8 @@ async function handle_dom_Detailes(city) {
   const sunrise = handle_hour(sunset_sunrise[1]);
   const airQuality = data[3];
   const visibilit = await visibility(city);
-  console.log(visibilit);
+  const humidity = await handle_humidity(city);
+
   document.querySelector(".number_Air").innerHTML = airQuality.air;
   document.querySelector(".commentair .text_commentair").innerHTML =
     airQuality.comment;
@@ -169,5 +170,39 @@ async function handle_dom_Detailes(city) {
   if (element) {
     element.style.marginTop = margin;
   }
+  document.querySelector(".left_side .number_humidity").innerHTML = humidity[0];
+  document.querySelector(".comment_humidity .comment").innerHTML = humidity[1];
+  document.querySelector(".comment_humidity .emoji").innerHTML = humidity[2];
 }
 handle_dom_Detailes("rabat");
+function comment_humidity(humidity) {
+  if (humidity >= 0 && humidity <= 30) {
+    return "Dry";
+  } else if (humidity > 30 && humidity <= 60) {
+    return "Normal";
+  } else if (humidity > 60 && humidity <= 80) {
+    return "Humid";
+  } else if (humidity >= 80 && humidity <= 100) {
+    return "Very Humid";
+  } else return "Invalid humidity value";
+}
+function emoji_humidity(humidity) {
+  if (humidity >= 0 && humidity <= 30) {
+    return "🏜️";
+  } else if (humidity > 30 && humidity <= 60) {
+    return "👌";
+  } else if (humidity > 60 && humidity <= 80) {
+    return "💧";
+  } else if (humidity >= 80 && humidity <= 100) {
+    return "💦";
+  } else return "Invalid emoji value";
+}
+async function handle_humidity(city) {
+  const data = await handleDetailes(city);
+  const humidity = data[4];
+  const comment = comment_humidity(humidity);
+  const emoji = emoji_humidity(humidity);
+  const res = [humidity, comment, emoji];
+  return res;
+}
+handle_humidity("rabat");
