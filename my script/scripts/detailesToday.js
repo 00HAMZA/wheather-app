@@ -57,12 +57,29 @@ function getcomment(aqi) {
   };
   return icons[aqi] || "None";
 }
+function handle_air_marginTop(aqi) {
+  const margin = {
+    1: "10px",
+    2: "20px",
+    3: "30px",
+    4: "40px",
+    5: "50px",
+    6: "60px",
+  };
+  return margin[aqi];
+}
 async function handle_qualityAir(city) {
   const data = (await getAirQuality(city)).airData;
   const air = data.list[0].main.aqi;
   const comment = getcomment(air);
   const icon = getAQIIcon(air);
   return { air, comment, icon };
+}
+async function handle_cadr_air_quality(city) {
+  const data = await handle_qualityAir(city);
+  const air = data.air;
+  const margin = handle_air_marginTop(air);
+  return `${margin}`;
 }
 export async function handleDetailes(city) {
   const data = await getData(city);
@@ -76,41 +93,41 @@ export async function handleDetailes(city) {
   res = [sun, wind, visibility, air];
   return res;
 }
-function visibility_comment(aqi){
+function visibility_comment(aqi) {
   const comment = {
-    1 : "Very Bad",
-    2 : "Bad",
-    3 : "Moderate",
-    4 : "Moderate",
-    5 : "Good",
-    6 : "Good",
-    7 : "Good",
-    8 : "Good",
-    9 : "Good",
-    10 : "Excellent"
-  }
+    1: "Very Bad",
+    2: "Bad",
+    3: "Moderate",
+    4: "Moderate",
+    5: "Good",
+    6: "Good",
+    7: "Good",
+    8: "Good",
+    9: "Good",
+    10: "Excellent",
+  };
   return comment[aqi];
 }
-function visibility_icons(aqi){
+function visibility_icons(aqi) {
   const icons = {
-    1 :"🚫👁️",
-    2 :"🚗💨",
-    3 :"🌥️",
-    4 :"🌥️",
-    5 :"👁️",
-    6 :"👁️",
-    7 :"👁️",
-    8 :"👁️",
-    9 :"👁️",
-    10 : "👁️✨"
-  }
+    1: "🚫👁️",
+    2: "🚗💨",
+    3: "🌥️",
+    4: "🌥️",
+    5: "👁️",
+    6: "👁️",
+    7: "👁️",
+    8: "👁️",
+    9: "👁️",
+    10: "👁️✨",
+  };
   return icons[aqi];
 }
-async function visibility(city){
+async function visibility(city) {
   let res = [];
   const data = await handleDetailes(city);
   const visibility = data[2];
-  const km = `${(visibility / 1000)}.${visibility % 1}`;
+  const km = `${visibility / 1000}.${visibility % 1}`;
   const comment = visibility_comment(visibility / 1000);
   const icons = visibility_icons(visibility / 1000);
   res = [km, comment, icons];
@@ -128,7 +145,7 @@ function handle_hour(time) {
 }
 async function handle_dom_Detailes(city) {
   const data = await handleDetailes(city);
-  const sunset_sunrise =  data[0];
+  const sunset_sunrise = data[0];
   const sunset = handle_hour(sunset_sunrise[0]);
   const sunrise = handle_hour(sunset_sunrise[1]);
   const airQuality = data[3];
@@ -144,7 +161,13 @@ async function handle_dom_Detailes(city) {
   document.querySelector(".sunrise_time").innerHTML = sunrise;
 
   document.querySelector(".visibility_km .number_km").innerHTML = visibilit[0];
-  document.querySelector(".visibility_comment .comment").innerHTML = visibilit[1];
+  document.querySelector(".visibility_comment .comment").innerHTML =
+    visibilit[1];
   document.querySelector(".visibility_comment .icon").innerHTML = visibilit[2];
+  const margin = await handle_cadr_air_quality(city);
+  const element = document.querySelector(".icon_Air");
+  if (element) {
+    element.style.marginTop = margin;
+  }
 }
 handle_dom_Detailes("rabat");
