@@ -355,14 +355,14 @@ body {
     text-transform: capitalize;
 }
 
-.number_Air{
+.number_Air, .number_humidity{
     font-size: 48px;
     font-weight: 600;
     color: #333;
     margin: 0 10px;
 }
 
-.icon_Air {
+.icon_Air , .icon_humidity{
     width: 12px;
     height: 12px;
     background: #667eea;
@@ -372,7 +372,7 @@ body {
     display: flex;
     margin-left: 2.3px;
 }
-.card_Air {
+.card_Air , .right_side{
     border: 2px darkgray solid;
     width: 20px;
     height: 70px;
@@ -380,21 +380,21 @@ body {
     position: relative;
 }
 
-.commentair {
+.commentair , .comment_humidity{
     display: flex;
     flex-direction: row;
     text-align: center;
     gap: 8px;
 }
 
-.text_commentair {
+.text_commentair , .comment{
     font-size: 20px;
     color: #666;
     margin-top: 3px;
     font-weight: 600;
 }
 
-.emoji_commentair {
+.emoji_commentair , .emoji{
     font-size: 24px;
 }
 .Number_card{
@@ -442,6 +442,7 @@ body {
 .visibility_km{
     display: flex;
     flex-direction: row;
+    gap: 5px;
 }
 .visibility_km .km{
     display: flex;
@@ -464,4 +465,22 @@ body {
 .visibility_comment .icon{
     font-size: large;
     margin-top: 2px;
+}
+.left_side{
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+}
+.percentage{
+    color: black;
+    font-size: x-large;
+    margin-top: 10px;
+}
+.number_humidity{
+    margin: 0;
+}
+.number_card_humidity{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }

@@ -108,6 +108,18 @@ function visibility_comment(aqi) {
   };
   return comment[aqi];
 }
+function humidity_margin(humidity) {
+  let margin;
+  if (humidity >= 0 && humidity <= 30) {
+    return margin = 40;
+  } else if (humidity > 30 && humidity <= 60) {
+    return margin = 30;
+  } else if (humidity > 60 && humidity <= 80) {
+    return margin = 20;
+  } else if (humidity >= 80 && humidity <= 100) {
+    return margin = 10;
+  } else return "Invalid humidity value";
+}
 function visibility_icons(aqi) {
   const icons = {
     1: "🚫👁️",
@@ -165,14 +177,19 @@ async function handle_dom_Detailes(city) {
   document.querySelector(".visibility_comment .comment").innerHTML =
     visibilit[1];
   document.querySelector(".visibility_comment .icon").innerHTML = visibilit[2];
-  const margin = await handle_cadr_air_quality(city);
-  const element = document.querySelector(".icon_Air");
-  if (element) {
-    element.style.marginTop = margin;
+  const margin_air = await handle_cadr_air_quality(city);
+  const element_air = document.querySelector(".icon_Air");
+  if (element_air) {
+    element_air.style.marginTop = margin_air;
   }
   document.querySelector(".left_side .number_humidity").innerHTML = humidity[0];
   document.querySelector(".comment_humidity .comment").innerHTML = humidity[1];
   document.querySelector(".comment_humidity .emoji").innerHTML = humidity[2];
+   const margin_humidity = await handle_cadr_humidity(city);
+  const element_humidity = document.querySelector(".icon_humidity");
+  if (element_humidity) {
+    element_humidity.style.marginTop = margin_humidity;
+  }
 }
 handle_dom_Detailes("rabat");
 function comment_humidity(humidity) {
@@ -206,3 +223,10 @@ async function handle_humidity(city) {
   return res;
 }
 handle_humidity("rabat");
+async function handle_cadr_humidity(city){
+  const data = await handle_humidity(city);
+  const aqi = data[0];
+  const margin = humidity_margin(aqi);
+  const res = `${margin}px`;
+  return res;
+}
