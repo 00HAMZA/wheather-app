@@ -501,10 +501,10 @@ body {
 .absolute {
   position: relative;
   width: 155px;
-    height: 80px;
+  height: 80px;
   border: 7px lightgray solid;
   border-bottom: none;
-  border-radius: 100px 100px  0 0;
+  border-radius: 100px 100px 0 0;
   z-index: 0;
 }
 .diagram {
@@ -514,7 +514,7 @@ body {
   display: flex;
   justify-content: center;
   margin: 0 auto;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 .uvindex_class {
   display: flex;
@@ -527,11 +527,32 @@ body {
   height: 100%;
 }
 .orange_diagram {
-    position: absolute;
-    width: 155px;
-    height: 80px;
-    border: 20px solid rgba(255, 166, 0, 0.589);
-    border-radius: 120px 120px 0 0;
-    border-bottom: none;
-    z-index: 2;
+  position: absolute;
+  width: 155px;
+  height: 80px;
+  border: 20px solid rgb(255, 166, 0);
+  border-radius: 120px 120px 0 0;
+  border-bottom: none;
+  z-index: 2;
+  mask: linear-gradient(130deg, black 40%, transparent 30%);
+}
+.number_uvindex i {
+  position: absolute;
+  font-size: 10px;
+}
+.fa-9{
+    left: 110px;
+    top: -12px;
+}
+.fa-6{
+    left: 23px;
+    top: -12px;
+}
+.fa-1{
+    left: 150px;
+    top: 30px;
+}
+.fa-3{
+    left: -17px;
+    top: 30px;
 }
