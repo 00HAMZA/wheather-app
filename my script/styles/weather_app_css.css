@@ -598,7 +598,7 @@ body {
   border-bottom: none;
   border-radius: 200px 200px 0 0;
   z-index: 2;
-  mask: linear-gradient(to right, black 40%, transparent 40%);
+  /* mask: linear-gradient(to right, black 40%, transparent 40%); */
   /* -webkit-mask: linear-gradient(to left, black 50%, transparent 50%); */
 }
 .arc_gray i {
@@ -614,18 +614,18 @@ body {
   top: -19px;
 }
 .fa-1 {
-    left: 127px;
-    top: 30px;
+  left: 127px;
+  top: 18px;
 }
 .fa-3 {
   left: -22px;
-  top: 30px;
+  top: 19px;
 }
 .uv_number {
-    position: absolute;
-    color: black;
-    font-size: 30px;
-    font-weight: 600;
-    left: 50px;
-    bottom: -2px;
+  position: absolute;
+  color: black;
+  font-size: 30px;
+  font-weight: 600;
+  left: 50px;
+  bottom: -2px;
 }

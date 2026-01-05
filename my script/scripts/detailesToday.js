@@ -8,7 +8,6 @@ async function getAirQuality(city) {
     const lon = data.coord.lon;
 
     const weatherApiKey = "6c5aa638b47d9c035d3b8a995b865304";
-    const openUvApiKey = "openuv-ubi59bermjq7p7zf-io";
 
     const airUrl = `https://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=${weatherApiKey}`;
     const uvUrl = `https://api.openweathermap.org/data/2.5/uvi?lat=${lat}&lon=${lon}&appid=${weatherApiKey}`;
@@ -22,7 +21,6 @@ async function getAirQuality(city) {
     }
     if (uvRes.ok) {
       uvData = await uvRes.json();
-      console.log(uvData);
     } else {
       console.log("uvData fetching failed", uvRes.status);
     }
@@ -169,15 +167,17 @@ export async function handle_dom_Detailes(city) {
   const visibilit = await visibility(city);
   const humidity = await handle_humidity(city);
   const wind = await handle_wind(city);
+  const uvindex = await handle_uvindex(city);
+  // air quality dom
   document.querySelector(".number_Air").innerHTML = airQuality.air;
   document.querySelector(".commentair .text_commentair").innerHTML =
     airQuality.comment;
   document.querySelector(".commentair .emoji_commentair").textContent =
     airQuality.icon;
-
+  // sunset sunrise dom
   document.querySelector(".sunset_time").innerHTML = sunset;
   document.querySelector(".sunrise_time").innerHTML = sunrise;
-
+  // visibility dom
   document.querySelector(".visibility_km .number_km").innerHTML = visibilit[0];
   document.querySelector(".visibility_comment .comment").innerHTML =
     visibilit[1];
@@ -187,7 +187,7 @@ export async function handle_dom_Detailes(city) {
   if (element_air) {
     element_air.style.marginTop = margin_air;
   }
-
+  // humidity dom
   document.querySelector(".left_side .number_humidity").innerHTML = humidity[0];
   document.querySelector(".comment_humidity .comment").innerHTML = humidity[1];
   document.querySelector(".comment_humidity .emoji").innerHTML = humidity[2];
@@ -196,8 +196,11 @@ export async function handle_dom_Detailes(city) {
   if (element_humidity) {
     element_humidity.style.marginTop = margin_humidity;
   }
-
+  //uv index dom
   document.querySelector(".number_card_wind .number_wind").innerHTML = wind;
+  const uvElement = document.querySelector(".uv_number");
+  uvElement.innerHTML = uvindex;
+  handle_orange_border(uvindex);
 }
 
 function comment_humidity(humidity) {
@@ -246,4 +249,52 @@ async function handle_wind(city) {
   const wind = data[1];
   const res = wind;
   return res;
+}
+async function handle_uvindex(city) {
+  const data = getAirQuality(city);
+  const uvindex = (await data).uvData;
+  const value = Math.round(uvindex.value);
+  return value;
+}
+function handle_orange_border(value) {
+  let border = document.querySelector(".arc_orange");
+  if (value === 0) {
+    border.style.border = "none";
+  }else if (value === 1) {
+    border.style.mask = "linear-gradient(to right, black 12%, transparent 12%)";
+    border.style.webkitMask = "linear-gradient(to top right, black 12%, transparent 12%)";
+  } else if (value === 2) {
+    border.style.mask = "linear-gradient(to  top right, black 17%, transparent 10%)";
+    border.style.webkitMask = "linear-gradient(to top right, black 17%, transparent 10%)";
+  } else if (value === 3) {
+    border.style.mask = "linear-gradient(to top right, black 25%, transparent 25%)";
+    border.style.webkitMask = "linear-gradient(to top right, black 25%, transparent 25%)";
+  } else if (value === 4) {
+    border.style.mask = "linear-gradient(to top right, black 40%, transparent 40%)";
+    border.style.webkitMask = "linear-gradient(to  top right, black 40%, transparent 40%)";
+  } else if (value === 5) {
+    border.style.mask = "linear-gradient(to top right , black 50%, transparent 50%)";
+    border.style.webkitMask = "linear-gradient(to  right, black 24%, transparent 24%)";
+  } else if (value === 6) {
+    border.style.mask = "linear-gradient(to right, black 50%, transparent 50%)";
+    border.style.webkitMask = "linear-gradient(to right, black 34%, transparent 34%)";
+  } else if (value === 7) {
+    border.style.mask = "linear-gradient(to right, black 50%, transparent 50%)";
+    border.style.webkitMask = "linear-gradient(to right, black 50%, transparent 50%)";
+  } else if (value === 8) {
+    border.style.mask = "linear-gradient(to bottom right, black 64%, transparent 64%)";
+    border.style.webkitMask = "linear-gradient(to  right, black 64%, transparent 64%)";
+  } else if (value === 9) {
+    border.style.mask = "linear-gradient(to right, black 75%, transparent 75%)";
+    border.style.webkitMask = "linear-gradient(to right, black 75%, transparent 75%)";
+  } else if (value === 10) {
+    border.style.mask = "linear-gradient(to right, black 87%, transparent 87%)";
+    border.style.webkitMask = "linear-gradient(to right, black 83%, transparent 83%)";
+  } else if (value === 11) {
+    border.style.mask = "linear-gradient(to bottom right, black 70%, transparent 70%)";
+    border.style.webkitMask = "linear-gradient(to bottom right, black 70%, transparent 70%)";
+  } else if (value >= 12) {
+    border.style.mask = "linear-gradient(to right, black 100%, transparent 100%)";
+    border.style.webkitMask = "linear-gradient(to right, black 100%, transparent 100%)";
+  }
 }
