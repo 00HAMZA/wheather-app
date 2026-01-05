@@ -11,16 +11,9 @@ async function getAirQuality(city) {
     const openUvApiKey = "openuv-ubi59bermjq7p7zf-io";
 
     const airUrl = `https://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=${weatherApiKey}`;
-    const uvUrl = `https://api.openuv.io/api/v1/uv?lat=${lat}&lng=${lon}`;
+    const uvUrl = `https://api.openweathermap.org/data/2.5/uvi?lat=${lat}&lon=${lon}&appid=${weatherApiKey}`;
 
-    const [airRes, uvRes] = await Promise.all([
-      fetch(airUrl),
-      fetch(uvUrl, {
-        headers: {
-          "x-access-token": openUvApiKey,
-        },
-      }),
-    ]);
+    const [airRes, uvRes] = await Promise.all([fetch(airUrl), fetch(uvUrl)]);
 
     if (airRes.ok) {
       airData = await airRes.json();
@@ -29,6 +22,7 @@ async function getAirQuality(city) {
     }
     if (uvRes.ok) {
       uvData = await uvRes.json();
+      console.log(uvData);
     } else {
       console.log("uvData fetching failed", uvRes.status);
     }
@@ -37,6 +31,7 @@ async function getAirQuality(city) {
   }
   return { airData, uvData };
 }
+
 function getAQIIcon(aqi) {
   const icons = {
     1: "😊",
@@ -47,6 +42,7 @@ function getAQIIcon(aqi) {
   };
   return icons[aqi] || "❓";
 }
+
 function getcomment(aqi) {
   const icons = {
     1: "Good",
@@ -57,6 +53,7 @@ function getcomment(aqi) {
   };
   return icons[aqi] || "None";
 }
+
 function handle_air_marginTop(aqi) {
   const margin = {
     1: "50px",
@@ -67,6 +64,7 @@ function handle_air_marginTop(aqi) {
   };
   return margin[aqi];
 }
+
 async function handle_qualityAir(city) {
   const data = (await getAirQuality(city)).airData;
   const air = data.list[0].main.aqi;
@@ -74,12 +72,14 @@ async function handle_qualityAir(city) {
   const icon = getAQIIcon(air);
   return { air, comment, icon };
 }
+
 async function handle_cadr_air_quality(city) {
   const data = await handle_qualityAir(city);
   const air = data.air;
   const margin = handle_air_marginTop(air);
   return `${margin}`;
 }
+
 export async function handleDetailes(city) {
   const data = await getData(city);
   let res = [];
@@ -93,6 +93,7 @@ export async function handleDetailes(city) {
   res = [sun, wind, visibility, air, humidity];
   return res;
 }
+
 function visibility_comment(aqi) {
   const comment = {
     1: "Very Bad",
@@ -108,18 +109,20 @@ function visibility_comment(aqi) {
   };
   return comment[aqi];
 }
+
 function humidity_margin(humidity) {
   let margin;
   if (humidity >= 0 && humidity <= 30) {
-    return margin = 40;
+    return (margin = 40);
   } else if (humidity > 30 && humidity <= 60) {
-    return margin = 30;
+    return (margin = 30);
   } else if (humidity > 60 && humidity <= 80) {
-    return margin = 20;
+    return (margin = 20);
   } else if (humidity >= 80 && humidity <= 100) {
-    return margin = 10;
+    return (margin = 10);
   } else return "Invalid humidity value";
 }
+
 function visibility_icons(aqi) {
   const icons = {
     1: "🚫👁️",
@@ -135,6 +138,7 @@ function visibility_icons(aqi) {
   };
   return icons[aqi];
 }
+
 async function visibility(city) {
   let res = [];
   const data = await handleDetailes(city);
@@ -145,7 +149,7 @@ async function visibility(city) {
   res = [km, comment, icons];
   return res;
 }
-visibility("rabat");
+
 function handle_hour(time) {
   const date = new Date(time * 1000);
   const rawHour = date.getHours();
@@ -155,7 +159,8 @@ function handle_hour(time) {
   const displayMinutes = minutes < 10 ? `0${minutes}` : minutes;
   return `${hour}:${displayMinutes} ${ampm}`;
 }
-async function handle_dom_Detailes(city) {
+
+export async function handle_dom_Detailes(city) {
   const data = await handleDetailes(city);
   const sunset_sunrise = data[0];
   const sunset = handle_hour(sunset_sunrise[0]);
@@ -163,7 +168,7 @@ async function handle_dom_Detailes(city) {
   const airQuality = data[3];
   const visibilit = await visibility(city);
   const humidity = await handle_humidity(city);
-
+  const wind = await handle_wind(city);
   document.querySelector(".number_Air").innerHTML = airQuality.air;
   document.querySelector(".commentair .text_commentair").innerHTML =
     airQuality.comment;
@@ -182,16 +187,19 @@ async function handle_dom_Detailes(city) {
   if (element_air) {
     element_air.style.marginTop = margin_air;
   }
+
   document.querySelector(".left_side .number_humidity").innerHTML = humidity[0];
   document.querySelector(".comment_humidity .comment").innerHTML = humidity[1];
   document.querySelector(".comment_humidity .emoji").innerHTML = humidity[2];
-   const margin_humidity = await handle_cadr_humidity(city);
+  const margin_humidity = await handle_cadr_humidity(city);
   const element_humidity = document.querySelector(".icon_humidity");
   if (element_humidity) {
     element_humidity.style.marginTop = margin_humidity;
   }
+
+  document.querySelector(".number_card_wind .number_wind").innerHTML = wind;
 }
-handle_dom_Detailes("rabat");
+
 function comment_humidity(humidity) {
   if (humidity >= 0 && humidity <= 30) {
     return "Dry";
@@ -203,6 +211,7 @@ function comment_humidity(humidity) {
     return "Very Humid";
   } else return "Invalid humidity value";
 }
+
 function emoji_humidity(humidity) {
   if (humidity >= 0 && humidity <= 30) {
     return "🏜️";
@@ -214,6 +223,7 @@ function emoji_humidity(humidity) {
     return "💦";
   } else return "Invalid emoji value";
 }
+
 async function handle_humidity(city) {
   const data = await handleDetailes(city);
   const humidity = data[4];
@@ -222,11 +232,18 @@ async function handle_humidity(city) {
   const res = [humidity, comment, emoji];
   return res;
 }
-handle_humidity("rabat");
-async function handle_cadr_humidity(city){
+
+async function handle_cadr_humidity(city) {
   const data = await handle_humidity(city);
   const aqi = data[0];
   const margin = humidity_margin(aqi);
   const res = `${margin}px`;
+  return res;
+}
+
+async function handle_wind(city) {
+  const data = await handleDetailes(city);
+  const wind = data[1];
+  const res = wind;
   return res;
 }

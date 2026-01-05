@@ -1,408 +1,418 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
 }
 
 .mainCard {
-    display: flex;
-    background: #f5f5f5;
-    border-radius: 30px;
-    overflow: hidden;
-    max-width: 1400px;
-    width: 100%;
-    min-height: 500px;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  display: flex;
+  background: #f5f5f5;
+  border-radius: 30px;
+  overflow: hidden;
+  max-width: 1400px;
+  width: 100%;
+  min-height: 500px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
 }
 
 /* ===== NAV SECTION ===== */
 .nav {
-    width: 350px;
-    background: white;
-    padding: 30px;
-    display: flex;
-    flex-direction: column;
-    gap: 25px;
+  width: 350px;
+  background: white;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
 }
 
 .navbar {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    background: #f8f9fa;
-    padding: 12px 15px;
-    border-radius: 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #f8f9fa;
+  padding: 12px 15px;
+  border-radius: 15px;
 }
 
 .searchbutton {
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
 }
 
 .imgclass {
-    width: 20px;
-    height: 20px;
+  width: 20px;
+  height: 20px;
 }
 
 .searchInput {
-    flex: 1;
-    border: none;
-    background: transparent;
-    font-size: 14px;
-    outline: none;
+  flex: 1;
+  border: none;
+  background: transparent;
+  font-size: 14px;
+  outline: none;
 }
 
 .searchInput::placeholder {
-    color: #aaa;
+  color: #aaa;
 }
 
 /* Weather State Section */
 .state {
-    text-align: center;
-    padding: 0;
+  text-align: center;
+  padding: 0;
 }
 
 .picWeather {
-    margin-bottom: 0;
+  margin-bottom: 0;
 }
 
 .bigIcon {
-    width: 180px;
-    height: 180px;
-    filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.1));
+  width: 180px;
+  height: 180px;
+  filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.1));
 }
 
 .degree {
-    font-size: 72px;
-    font-weight: 300;
-    margin-bottom: 15px;
+  font-size: 72px;
+  font-weight: 300;
+  margin-bottom: 15px;
 }
 
 .temp-number {
-    font-weight: 600;
+  font-weight: 600;
 }
 
 .p-cilisius {
-    font-size: 48px;
-    font-weight: 300;
+  font-size: 48px;
+  font-weight: 300;
 }
 
 .date {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    color: #666;
-    font-size: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  color: #666;
+  font-size: 16px;
 }
 
 .day {
-    font-weight: 600;
-    color: #333;
+  font-weight: 600;
+  color: #333;
 }
 
 .hour {
-    font-size: 14px;
+  font-size: 14px;
 }
 
 .separator {
-    height: 1px;
-    background: #e0e0e0;
-    margin: 10px 0;
+  height: 1px;
+  background: #e0e0e0;
+  margin: 10px 0;
 }
 
 /* Details Section */
 .detailes {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 }
 
-.detaile1, .detaile2 {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 12px;
-    background: #f8f9fa;
-    border-radius: 12px;
-    font-size: 14px;
-    color: #555;
+.detaile1,
+.detaile2 {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  background: #f8f9fa;
+  border-radius: 12px;
+  font-size: 14px;
+  color: #555;
 }
 
-.iconDetailes, .iconDetailes2 {
-    width: 24px;
-    height: 24px;
+.iconDetailes,
+.iconDetailes2 {
+  width: 24px;
+  height: 24px;
 }
 
 /* City Section */
 .city {
-    position: relative;
-    border-radius: 15px;
-    overflow: hidden;
-    height: 140px;
-    margin-top: auto;
+  position: relative;
+  border-radius: 15px;
+  overflow: hidden;
+  height: 140px;
+  margin-top: auto;
 }
 
 .cityImage {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .cityName {
-    position: absolute;
-    bottom: 15px;
-    left: 15px;
-    color: white;
-    font-size: 18px;
-    font-weight: 600;
-    z-index: 2;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
+  color: white;
+  font-size: 18px;
+  font-weight: 600;
+  z-index: 2;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .shadow {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 60%;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.6), transparent);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 60%;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.6), transparent);
 }
 
 /* ===== CONTENT SECTION ===== */
 .content {
-    flex: 1;
-    padding: 40px;
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
+  flex: 1;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
 }
 
 /* Header Content */
 .headerContent {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .right-side {
-    display: flex;
-    gap: 30px;
+  display: flex;
+  gap: 30px;
 }
 
-.today, .week {
-    font-size: 18px;
-    color: #999;
-    cursor: pointer;
-    padding-bottom: 8px;
-    transition: all 0.3s;
+.today,
+.week {
+  font-size: 18px;
+  color: #999;
+  cursor: pointer;
+  padding-bottom: 8px;
+  transition: all 0.3s;
 }
 
 .week {
-    color: #333;
-    font-weight: 600;
-    border-bottom: 3px solid #333;
+  color: #333;
+  font-weight: 600;
+  border-bottom: 3px solid #333;
 }
 
 .left-side {
-    display: flex;
-    gap: 15px;
-    align-items: center;
+  display: flex;
+  gap: 15px;
+  align-items: center;
 }
 
-.Cilicuis, .f-temp {
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    cursor: pointer;
-    font-size: 14px;
-    font-weight: 600;
-    transition: all 0.3s;
+.Cilicuis,
+.f-temp {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  transition: all 0.3s;
 }
 
 .Cilicuis {
-    background: #333;
-    color: white;
+  background: #333;
+  color: white;
 }
 
 .f-temp {
-    background: white;
-    color: #666;
+  background: white;
+  color: #666;
 }
 
 .profile {
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
-    overflow: hidden;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  overflow: hidden;
 }
 
 .profileclass {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 /* Week Days Section */
 .detailesDays {
-    display: flex;
-    gap : 15px;
+  display: flex;
+  gap: 15px;
 }
 
 .days {
-    background: white;
-    border-radius: 20px;
-    padding: 20px 15px;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    transition: transform 0.3s;
-    min-width: 130px;
-    flex-shrink: 0;
+  background: white;
+  border-radius: 20px;
+  padding: 20px 15px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  transition: transform 0.3s;
+  min-width: 130px;
+  flex-shrink: 0;
 }
 
 .days:hover {
-    transform: translateY(-5px);
+  transform: translateY(-5px);
 }
 
 .days .title {
-    font-weight: 600;
-    color: #666;
-    font-size: 14px;
+  font-weight: 600;
+  color: #666;
+  font-size: 14px;
 }
 
 .days .icon {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60px;
 }
 
 .days .img {
-    width: 50px;
-    height: 50px;
+  width: 50px;
+  height: 50px;
 }
 
 .days .degre {
-    display: flex;
-    justify-content: center;
-    gap: 8px;
-    font-size: 14px;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  font-size: 14px;
 }
 
 .days .max {
-    color: #333;
-    font-weight: 600;
+  color: #333;
+  font-weight: 600;
 }
 
 .days .min {
-    color: #999;
+  color: #999;
 }
 
 /* Highlights Section */
 .highlights {
-    font-size: 22px;
-    font-weight: 600;
-    color: #333;
-    text-transform: capitalize;
+  font-size: 22px;
+  font-weight: 600;
+  color: #333;
+  text-transform: capitalize;
 }
 
 /* Details Cards */
 .detaile {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
 }
 
 .card {
-    background: white;
-    border-radius: 20px;
-    padding: 25px;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    font-size: 14px;
-    color: #999;
-    text-transform: capitalize;
-    min-height: 150px;
+  background: white;
+  border-radius: 20px;
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  font-size: 14px;
+  color: #999;
+  text-transform: capitalize;
+  min-height: 150px;
 }
 
 /* Air Quality Card */
 .card {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .AirQuality {
-    font-size: 14px;
-    color: #999;
-    text-transform: capitalize;
+  font-size: 14px;
+  color: #999;
+  text-transform: capitalize;
 }
 
-.number_Air, .number_humidity{
-    font-size: 48px;
-    font-weight: 600;
-    color: #333;
-    margin: 0 10px;
+.number_Air,
+.number_humidity {
+  font-size: 48px;
+  font-weight: 600;
+  color: #333;
+  margin: 0 10px;
 }
 
-.icon_Air , .icon_humidity{
-    width: 12px;
-    height: 12px;
-    background: #667eea;
-    border-radius: 50%;
-    margin-right: 30px;
-    position: absolute;
-    display: flex;
-    margin-left: 2.3px;
+.icon_Air,
+.icon_humidity {
+  width: 12px;
+  height: 12px;
+  background: #667eea;
+  border-radius: 50%;
+  margin-right: 30px;
+  position: absolute;
+  display: flex;
+  margin-left: 2.3px;
 }
-.card_Air , .right_side{
-    border: 2px darkgray solid;
-    width: 20px;
-    height: 70px;
-    border-radius: 10px;
-    position: relative;
-}
-
-.commentair , .comment_humidity{
-    display: flex;
-    flex-direction: row;
-    text-align: center;
-    gap: 8px;
+.card_Air,
+.right_side {
+  border: 2px darkgray solid;
+  width: 20px;
+  height: 70px;
+  border-radius: 10px;
+  position: relative;
 }
 
-.text_commentair , .comment{
-    font-size: 20px;
-    color: #666;
-    margin-top: 3px;
-    font-weight: 600;
+.commentair,
+.comment_humidity {
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  gap: 8px;
 }
 
-.emoji_commentair , .emoji{
-    font-size: 24px;
+.text_commentair,
+.comment {
+  font-size: 20px;
+  color: #666;
+  margin-top: 3px;
+  font-weight: 600;
 }
-.Number_card{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+
+.emoji_commentair,
+.emoji {
+  font-size: 24px;
 }
-.arrow_icon{
+.Number_card {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.arrow_icon {
   width: 32px;
   height: 32px;
   border-radius: 50%;
@@ -414,73 +424,114 @@ body {
   font-weight: 600;
   background-color: yellow;
   box-shadow: inset 0 1px 14px rgba(203, 81, 15, 0.852),
-   0 1px 4px rgba(203, 81, 15, 0.852);
+    0 1px 4px rgba(203, 81, 15, 0.852);
 }
-.sunset_time, .sunrise_time{
-    color: rgb(67, 67, 67);
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-size: large;
-    font-weight: 500;
-    margin-top: 4px;
+.sunset_time,
+.sunrise_time {
+  color: rgb(67, 67, 67);
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-size: large;
+  font-weight: 500;
+  margin-top: 4px;
 }
-.Sunset , .Sunrise{
-    display: flex;
-    flex-direction: row;
-    gap: 16px;
+.Sunset,
+.Sunrise {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
 }
 /* visibility */
-.visibility{
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+.visibility {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
-.number_km{
-    font-size: 48px;
-    font-weight: 600;
-    color: #333;
+.number_km,
+.number_wind {
+  font-size: 48px;
+  font-weight: 600;
+  color: #333;
 }
-.visibility_km{
-    display: flex;
-    flex-direction: row;
-    gap: 5px;
+.visibility_km {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
 }
-.visibility_km .km{
-    display: flex;
-    align-items: end;
-    margin-bottom: 10px;
-    font-size: large;
-    color: #333;
+.visibility_km .km,
+.wind_km {
+  display: flex;
+  align-items: end;
+  margin-bottom: 10px;
+  font-size: large;
+  color: #333;
 }
-.visibility_comment{
-    display: flex;
-    flex-direction: row;
-    gap: 10px;
-    margin-top: 5px;
+.visibility_comment {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  margin-top: 5px;
 }
-.visibility_comment .comment{
-    font-size: 20px;
-    color: #666;
-    font-weight: 600;
+.visibility_comment .comment {
+  font-size: 20px;
+  color: #666;
+  font-weight: 600;
 }
-.visibility_comment .icon{
-    font-size: large;
-    margin-top: 2px;
+.visibility_comment .icon {
+  font-size: large;
+  margin-top: 2px;
 }
-.left_side{
-    display: flex;
-    flex-direction: row;
-    gap: 5px;
+.left_side {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
 }
-.percentage{
-    color: black;
-    font-size: x-large;
-    margin-top: 10px;
+.percentage {
+  color: black;
+  font-size: x-large;
+  margin-top: 10px;
 }
-.number_humidity{
-    margin: 0;
+.number_humidity {
+  margin: 0;
 }
-.number_card_humidity{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+.number_card_humidity {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.absolute {
+  position: relative;
+  width: 155px;
+    height: 80px;
+  border: 7px lightgray solid;
+  border-bottom: none;
+  border-radius: 100px 100px  0 0;
+  z-index: 0;
+}
+.diagram {
+  position: relative;
+  width: 200px;
+  height: 70px;
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  overflow: hidden;
+}
+.uvindex_class {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+.number_uvindex {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.orange_diagram {
+    position: absolute;
+    width: 155px;
+    height: 80px;
+    border: 20px solid rgba(255, 166, 0, 0.589);
+    border-radius: 120px 120px 0 0;
+    border-bottom: none;
+    z-index: 2;
 }

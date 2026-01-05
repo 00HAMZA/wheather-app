@@ -1,4 +1,5 @@
 // {}
+import { handle_dom_Detailes } from "./detailesToday.js"
 import { handleDetailes } from "./detailesToday.js";
 import {mainFunction} from "./weather-week.js";
 import {
@@ -24,6 +25,7 @@ function mainFunc() {
     picture(city);
     handleDetailes(city);
     mainFunction(city);
+    handle_dom_Detailes(city);
   }
   input.addEventListener("keydown", (event) => {
     if (event.key === "Enter") {

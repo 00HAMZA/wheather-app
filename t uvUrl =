@@ -1,0 +1,215 @@
+[33mcommit 3d0d40e6f46d95880f1c15babbe460077531d86b[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: 00HAMZA <hamzalawi3@gmail.com>
+Date:   Sat Jan 3 19:45:15 2026 +0100
+
+    finish the humidity card
+
+[33mcommit ab33b7da9d610dc9d3715b17fe1fd7192b1540cd[m
+Author: 00HAMZA <hamzalawi3@gmail.com>
+Date:   Sat Jan 3 19:13:35 2026 +0100
+
+    handle the humidity with dom
+
+[33mcommit 162da42a58d6bccea63d22c719b577e248959380[m
+Author: 00HAMZA <hamzalawi3@gmail.com>
+Date:   Sat Jan 3 12:42:16 2026 +0100
+
+    fix the problem if the air quality
+
+[33mcommit 25d09e574e87242fc9c442e5fe22f27592bb7a12[m
+Author: 00HAMZA <hamzalawi3@gmail.com>
+Date:   Wed Dec 31 19:46:38 2025 +0100
+
+    finish the visibility and almost the Air quality
+
+[33mcommit 72ed06048951976e6452e5724c0cd3e13787fd53[m
+Author: 00HAMZA <hamzalawi3@gmail.com>
+Date:   Wed Dec 31 18:02:58 2025 +0100
+
+    handle the sunset theme
+
+[33mcommit 4b3f699ccc2584285168e146cba9b1716f2d5a1a[m
+Author: 00HAMZA <hamzalawi3@gmail.com>
+Date:   Wed Dec 31 17:18:54 2025 +0100
+
+    handle the sunset and sunrise with dom
+
+[33mcommit c0f8a3456212bc908e6eeac58f8bf4d47107c59b[m
+Author: 00HAMZA <hamzalawi3@gmail.com>
+Date:   Wed Dec 31 15:49:05 2025 +0100
+
+    finish the card of air
+
+[33mcommit 2fe133ff6c0098fc8e32bb07273d96974763bc1e[m
+Author: 00HAMZA <hamzalawi3@gmail.com>
+Date:   Wed Dec 31 14:57:34 2025 +0100
+
+    semi finish the css
+
+[33mcommit c4dd41e09c9b5b0ccbf77836ddd1cee46dae5b78[m
+Author: 00HAMZA <hamzalawi3@gmail.com>
+Date:   Tue Dec 30 21:08:39 2025 +0100
+
+    handle the variables to affiche it with dom
+
+[33mcommit 332ce1a0c420ebe4a4a6a61598c8e777ac2b1a6f[m
+Author: 00HAMZA <hamzalawi3@gmail.com>
+Date:   Tue Dec 30 20:01:46 2025 +0100
+
+    handle the air quality and affiche it with dom
+
+[33mcommit 0d00c2333f0b64d27d560bf4962aad9b9f842331[m
+Author: 00HAMZA <hamzalawi3@gmail.com>
+Date:   Tue Dec 30 19:15:29 2025 +0100
+
+    fetching the uvindex and airQuality
+
+[33mcommit 3592629a0d769ae3e511010663003dca37e38fb0[m
+Author: 00HAMZA <hamzalawi3@gmail.com>
+Date:   Tue Dec 30 18:57:11 2025 +0100
+
+    merge the weather week with the today weather
+
+[33mcommit a0e76a410cf40d17d08b15ea4520634663a86fb2[m
+Author: 00HAMZA <hamzalawi3@gmail.com>
+Date:   Sun Dec 28 02:36:00 2025 +0100
+
+    fix the bug of the main icon
+
+[33mcommit bb8d2890c4908ac5508be47597ccf696c61ecb75[m
+Author: 00HAMZA <hamzalawi3@gmail.com>
+Date:   Sun Dec 28 02:17:58 2025 +0100
+
+    styling the c and f degree
+
+[33mcommit 5706d091e3e7a7a15090feb10063fad6cde24e17[m
+Author: 00HAMZA <hamzalawi3@gmail.com>
+Date:   Sat Dec 27 21:19:48 2025 +0100
+
+    handle the dom of the week weather icons
+
+[33mcommit 8755ed02aac1fb1364c14c700fd957ba7a672e39[m
+Author: 00HAMZA <hamzalawi3@gmail.com>
+Date:   Sat Dec 27 20:52:24 2025 +0100
+
+    handle the urls of the pictures (handle url)to put them in the dom
+
+[33mcommit ad250a3a506f59430dd33fd10863e4373a3d8e2d[m
+Author: 00HAMZA <hamzalawi3@gmail.com>
+Date:   Fri Dec 26 17:25:50 2025 +0100
+
+    handle and fix the error and fetching the degree of the min and the max
+
+[33mcommit ad6c8afc40d052970b361645fdc46d814e749ace[m
+Author: 00HAMZA <hamzalawi3@gmail.com>
+Date:   Thu Dec 25 00:17:21 2025 +0100
+
+    handle the dom degree of the week cards
+
+[33mcommit 3780bebe3a771d5939f43f682ca486cec51599b4[m
+Author: 00HAMZA <hamzalawi3@gmail.com>
+Date:   Wed Dec 24 23:27:13 2025 +0100
+
+    handle the function that selected five days from thr array of arrays
+
+[33mcommit 985b5b1cf6f3dfb1e00cf8036cf7192f1241987f[m
+Author: 00HAMZA <hamzalawi3@gmail.com>
+Date:   Wed Dec 24 21:44:19 2025 +0100
+
+    handle the function that returns all the array ready to affiche it in the front
+
+[33mcommit dc71df544af68165095437c64cfd1e712f4efe67[m
+Author: 00HAMZA <hamzalawi3@gmail.com>
+Date:   Wed Dec 24 20:28:54 2025 +0100
+
+    handle the function to groups the days of the week
+
+[33mcommit c426843ed309a176f71072c4ab2c406dc6d79d5f[m
+Author: 00HAMZA <hamzalawi3@gmail.com>
+Date:   Tue Dec 23 20:51:48 2025 +0100
+
+    create the function that groups all the temps of the day (packetsdates)
+
+[33mcommit e408e7d7e2664a9b58d24f638e261afd01008329[m
+Author: 00HAMZA <hamzalawi3@gmail.com>
+Date:   Mon Dec 15 23:02:25 2025 +0100
+
+    make the html of the content part
+
+[33mcommit a59fb969bc170d866486144ac61d07b1bdb5f4bb[m
+Author: 00HAMZA <hamzalawi3@gmail.com>
+Date:   Mon Dec 15 11:36:26 2025 +0100
+
+    fix the weather icon
+
+[33mcommit 6f0c731a6234ea15595562241d102eadeaf9a034[m
+Author: 00HAMZA <hamzalawi3@gmail.com>
+Date:   Sat Dec 13 23:47:18 2025 +0100
+
+    handle the picture of weather to be mathced with the informations
+
+[33mcommit 4d3729188497e9b442b4dabbf0ddf24267200acf[m
+Author: 00HAMZA <hamzalawi3@gmail.com>
+Date:   Sat Dec 13 21:42:04 2025 +0100
+
+    split the code into two parts
+
+[33mcommit 93a366c23671f10b5e9fa0dfd641549871393106[m
+Author: 00HAMZA <hamzalawi3@gmail.com>
+Date:   Sat Dec 13 20:39:24 2025 +0100
+
+    handle the search bar into main function
+
+[33mcommit 7fc94cff6043300b187a2b9351f1f74c13462a5a[m
+Author: 00HAMZA <hamzalawi3@gmail.com>
+Date:   Fri Dec 12 20:30:35 2025 +0100
+
+    handle the name in the fornt of the picture
+
+[33mcommit c527a76f18a9f27f9e9beac2a48be3f087941846[m
+Author: 00HAMZA <hamzalawi3@gmail.com>
+Date:   Fri Dec 12 19:57:45 2025 +0100
+
+    handle the picture of the city
+
+[33mcommit 6c139ff5a5702c4a02ad5d910479964b339bc349[m
+Author: 00HAMZA <hamzalawi3@gmail.com>
+Date:   Thu Dec 11 22:39:35 2025 +0100
+
+    add the detailes of weather
+
+[33mcommit d6a03b6e51112f32ac69af8043ae657deb1e97fd[m
+Author: 00HAMZA <hamzalawi3@gmail.com>
+Date:   Thu Dec 11 20:24:12 2025 +0100
+
+    display the detailes weather
+
+[33mcommit f80cf4626e13e361de871089054bc1d0e383dec2[m
+Author: 00HAMZA <hamzalawi3@gmail.com>
+Date:   Thu Dec 11 19:45:12 2025 +0100
+
+    handle the date and hour
+
+[33mcommit c8246a9122fa25464b3c070c14505d6251978bf7[m
+Author: 00HAMZA <hamzalawi3@gmail.com>
+Date:   Wed Dec 10 20:22:54 2025 +0100
+
+    fetching the picture and put it i the website with blob methode
+
+[33mcommit b1f475d0a2d9594d8ab37df68b4ddaaf35f1d304[m
+Author: 00HAMZA <hamzalawi3@gmail.com>
+Date:   Wed Dec 10 17:13:25 2025 +0100
+
+    create the main card of the weather app
+
+[33mcommit 4f28b70a9cea5089651f57d42a6df82b98e0b6fd[m
+Author: 00HAMZA <hamzalawi3@gmail.com>
+Date:   Wed Dec 10 15:15:54 2025 +0100
+
+    fetching data and processing it..
+
+[33mcommit 51b97b2d1887313264647de627ef1c2b46aa0479[m
+Author: 00HAMZA <hamzalawi3@gmail.com>
+Date:   Wed Dec 10 13:46:56 2025 +0100
+
+    first commit
