@@ -30,7 +30,7 @@ function mainFunc() {
   input.addEventListener("keydown", (event) => {
     if (event.key === "Enter") {
       handleInput();
-    }
+    }e
   });
 
   button.addEventListener("click", handleInput);
